@@ -1,5 +1,6 @@
 ﻿require([
         "esri/map",
+        "esri/basemaps",
         "esri/dijit/Popup",
         "esri/geometry/Point",
         "esri/tasks/QueryTask",
@@ -18,6 +19,7 @@
         "app/scoreboard"
 ],
     function (Map,
+        esriBasemaps,
         Popup,
         Point,
         QueryTask,
@@ -243,8 +245,14 @@
 
             //Create the map and overview map
             function createMap(extent) {
+                esriBasemaps.clarity = {
+                    baseMapLayers: [{
+                        url: "//clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer"
+                    }],
+                    title: "Clarity"
+                };
                 map = new Map("map", {
-                    basemap: "satellite",
+                    basemap: esriBasemaps.clarity,
                     extent: extent,
                     showAttribution: false
                 });
