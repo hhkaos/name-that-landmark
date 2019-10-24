@@ -1,4 +1,4 @@
-﻿require([
+require([
         "esri/map",
         "esri/basemaps",
         "esri/dijit/Popup",
@@ -34,7 +34,7 @@
         configJson) {
         $(document).ready(function () {
 
-            //Get globals from config 
+            //Get globals from config
             var config = JSON.parse(configJson);
             var leaderboardUrl = config.leaderboardFS;
             var gameContentUrl = config.gameFS;
@@ -192,13 +192,14 @@
 
             //Remove the scratching surface and display the answer popup
             function reveal(roundPoints) {
+                mouseDown = false;
                 var popup = new Popup({
                     titleInBody: true,
                     fillSymbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
                         new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
                             new Color([255, 0, 0]), 2), new Color([255, 255, 0, 0.25]))
                 }, domConstruct.create("div"));
-                map.infoWindow.setTitle('The correct answer is...');
+                map.infoWindow.setTitle('La respuesta correcta es...');
                 map.infoWindow.setContent(answersArray[round]);
                 map.infoWindow.show(map.extent.getCenter());
                 //Clear the timers ready for the next round
@@ -225,7 +226,7 @@
                     $("#pad").css("pointer-events", "none");
                     $(".mask").css("display", "block");
                     $('#rounds-remain').html(round + 1);
-                    $('#points').html('Answer correctly to receive max points');
+                    $('#points').html('Contesta correctamente para recibir el máximo de puntos');
                     $(".reveal").css("display", "none");
                     $(".answer-panel").css("display", "block");
                     $("#map_zoom_slider").css("display", "none");
@@ -314,10 +315,12 @@
                     if (round == 0) {
                         $('body').addClass('game-active');
                     };
+                    mouseDown = true;
                     //Make sure the round timer is reset
                     currentTimeLeft = timeLeft;
                     $('#countdown').html(currentTimeLeft);
                     $('.timer').css("display", "none");
+                    $('#answer').focus();
                     $('.guide').css("display", "none");
                     roundTimer = setInterval(roundCountdown, 1000);
                     calculatePoints();
@@ -327,7 +330,7 @@
                     count = 3;
                 } else {
                     if (count == 5) {
-                        $('#pad').append("<div class='guide'>Get ready to scratch here and Name That Landmark! <br> Scratch wisely...the more you scratch, the less you score! </div>");
+                        $('#pad').append("<div class='guide'>Prepárate para rascar aquí! <br> Rasca sabiamente... cuanto más rasques, menos puntuación obtendrás! </div>");
                         $('#pad').append("<div class='timer'>" + count + "</div>");
                     } else {
                         $('.timer').css("display", "block");
@@ -341,7 +344,7 @@
             function calculatePoints() {
                 pointsTimer = setInterval(function () {
                     var points = window.scratchPoints + (currentTimeLeft * 100);
-                    $('#points').html('Answer now and receive ' + points + ' points');
+                    $('#points').html('Responde ahora y recibe ' + points + ' puntos');
                 }, 100);
             }
 

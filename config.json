@@ -1,5 +1,5 @@
 {
-  "gameFS": "//services.arcgis.com/Qo2anKIAMzIEkIJB/arcgis/rest/services/ScratchMapWorldLandmarks/FeatureServer/0",
+  "gameFS": "//services3.arcgis.com/UlkXMDr5qa7NVX95/arcgis/rest/services/ScratchMapWorldLandmarks_Spanish/FeatureServer/0",
   "leaderboardFS": "//services.arcgis.com/Qo2anKIAMzIEkIJB/arcgis/rest/services/ScratchMapLandmarkLeaderboard/FeatureServer/0",
   "answerField": "Name",
   "objectField": "OBJECTID",

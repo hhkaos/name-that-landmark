@@ -606,7 +606,7 @@ canvas#j-cvs {
 }
 
 #rounds-remain::before {
-	content: "ROUND ";
+	content: "RONDA ";
 }
 
 .esriPopup .titleButton.maximize,
@@ -671,7 +671,7 @@ canvas#j-cvs {
     z-index: 9999;
     -ms-transform: rotate(7deg);
     -webkit-transform: rotate(7deg);
-    -webkit-backface-visibility: hidden; 
+    -webkit-backface-visibility:ï¿½hidden;
     font-weight: 900;
     transform: rotate(-7deg);
     text-align: center;
