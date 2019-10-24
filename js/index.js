@@ -252,7 +252,8 @@
                     title: "Clarity"
                 };
                 map = new Map("map", {
-                    basemap: esriBasemaps.clarity,
+                    //basemap: esriBasemaps.clarity,
+                    basemap: "satellite",
                     extent: extent,
                     showAttribution: false
                 });
